@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """ base_model module """
 
 import uuid
@@ -27,14 +27,14 @@ class BaseModel:
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
-        """updates the public instance attribute updated_at with the 
+        """updates the public instance attribute updated_at with the
             current datetime"""
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
         """returns dictionary representation of BaseModel class"""
-        inst  = dict(self.__dict__)
+        inst = dict(self.__dict__)
         inst["created_at"] = self.created_at.isoformat(timespec='microseconds')
         inst["updated_at"] = self.updated_at.isoformat(timespec='microseconds')
         inst["__class__"] = self.__class__.__name__

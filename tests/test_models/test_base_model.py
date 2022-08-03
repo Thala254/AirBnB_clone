@@ -1,16 +1,55 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """test module for BaseModel class"""
 
 import unittest
+import pep8
 import sys
-import datetime
+import inspect
+from datetime import datetime
 from io import StringIO
-from models.base_model import BaseModel
+from models import base_model, BaseModel
+
+
+class TestBaseModelDocs(unittest.TestCase):
+    """Tests to check the documentation and style of BaseModel class"""
+    @classmethod
+    def setUpClass(cls):
+        """Set up for the doc tests"""
+        cls.base_funcs = inspect.getmembers(BaseModel, inspect.isfunction)
+
+    def test_pep8_style_base(self):
+        """Test that models/base_model.py conforms to PEP8."""
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['models/base_model.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
+
+    def test_pep8_style_base(self):
+        """Test that tests/test_models/test_base_model.py conforms to PEP8."""
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files([
+                                        'tests/test_models/test_base_model.py'
+                                      ])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
+
+    def test_module_docstring(self):
+        """Tests for the module docstring"""
+        self.assertTrue(len(base_model.__doc__) >= 1)
+
+    def test_class_docstring(self):
+        """Tests for the BaseModel class docstring"""
+        self.assertTrue(len(BaseModel.__doc__) >= 1)
+
+    def test_func_docstrings(self):
+        """Tests for the presence of docstrings in all functions"""
+        for func in self.base_funcs:
+            self.assertTrue(len(func[1].__doc__) >= 1)
 
 
 class TestBaseModel(unittest.TestCase):
     """Tests for BaseModel class"""
-    
+
     def setUp(self):
         """ seting up BaseModel instance to be used for tests """
         self.test_model = BaseModel()
@@ -25,14 +64,16 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual("<class 'str'>", str(type(self.test_model.id)))
 
     def test_id_unique(self):
-        """check whether each instance of the BaseModel class has a unique id"""
+        """
+            check whether each instance of the BaseModel class has a unique id
+        """
         new_instance = BaseModel()
         self.assertNotEqual(new_instance.id, self.test_model.id)
 
     def test_created_at_and_updated_at_attribute_type(self):
         """ checks the type for the created at attribute """
-        self.assertTrue(isinstance(self.test_model.created_at, datetime.datetime))
-        self.assertTrue(isinstance(self.test_model.updated_at, datetime.datetime))
+        self.assertTrue(isinstance(self.test_model.created_at, datetime))
+        self.assertTrue(isinstance(self.test_model.updated_at, datetime))
 
     def test_new_attributes(self):
         """check if new attributes can be added"""
@@ -47,16 +88,16 @@ class TestBaseModel(unittest.TestCase):
 
     def test_new_instance_created_at_equals_updated_at(self):
         """
-           checks that the date of the attributes created_at and updated_at 
+           checks that the date of the attributes created_at and updated_at
            are similar for a new instance before updation
         """
         new_model = BaseModel()
         self.assertEqual(new_model.created_at.day, new_model.updated_at.day)
 
     def test_str(self):
-        """ 
+        """
             checks that the correct string representation of the instance is
-            printed 
+            printed
         """
         test_id = self.test_model.id
         output = sys.stdout
