@@ -24,7 +24,7 @@ class BaseModel:
 
     def __str__(self):
         """String representation of the BaseModel class"""
-        return f"[{self.__class__.__name__}]({self.id}) {self.__dict__}"
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """updates the public instance attribute updated_at with the 
@@ -39,3 +39,7 @@ class BaseModel:
         inst["updated_at"] = self.updated_at.isoformat(timespec='microseconds')
         inst["__class__"] = self.__class__.__name__
         return inst
+
+    def delete(self):
+        """ delete the current instance from storage """
+        models.storage.delete(self)
