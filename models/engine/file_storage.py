@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
-""" 
+#!/usr/bin/python3
+"""
 module that supplies the class FileStorage
 """
 
@@ -10,14 +10,13 @@ import models
 class FileStorage:
     """
     class that serializes instances to a JSON file and deserializes JSON file
-    to instances 
+    to instances
     it stores objects in a file in a json format
 
     **Class Attributes**
         __file_path: private, the path/to/file
         __objects: private, a dictionary of all the objects
     """
-    
     __file_path = "file.json"
     __objects = {}
 
