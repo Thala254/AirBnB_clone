@@ -98,7 +98,7 @@ class TestConsole(unittest.TestCase):
             self.assertEqual("[]\n", fake_output.getvalue())
 
     def test_destroy(self):
-        Test cmd output: destroy
+        """Test cmd output: destroy"""
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("destroy")
             self.assertEqual("** class name missing **\n",
