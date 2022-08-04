@@ -150,7 +150,7 @@ class TestConsole(unittest.TestCase):
             self.assertEqual("** class name missing **\n",
                              fake_output.getvalue())
         with patch('sys.stdout', new=StringIO()) as fake_output:
-            self.typing.onecmd("SomeClass.show")
+            self.typing.onecmd("SomeClass.show()")
             self.assertEqual("** class doesn't exist **\n",
                              fake_output.getvalue())
         with patch('sys.stdout', new=StringIO()) as fake_output:
