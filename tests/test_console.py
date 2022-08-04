@@ -105,7 +105,7 @@ class TestConsole(unittest.TestCase):
                              fake_output.getvalue())
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("destroy TheWorld")
-            self.assertEqual("** class doesnt exist **\n",
+            self.assertEqual("** class doesn't exist **\n",
                              fake_output.getvalue())
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("destroy User")
