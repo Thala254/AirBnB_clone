@@ -77,7 +77,7 @@ class TestConsole(unittest.TestCase):
                              fake_output.getvalue())
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("create SomeClass")
-            self.assertEqual("** class doesnt exist **\n",
+            self.assertEqual("** class doesn't exist **\n",
                              fake_output.getvalue())
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("create User")  # not used
@@ -91,7 +91,7 @@ class TestConsole(unittest.TestCase):
         """Test cmd output: all"""
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("all NonExistantModel")
-            self.assertEqual("** class doesnt exist **\n",
+            self.assertEqual("** class doesn't exist **\n",
                              fake_output.getvalue())
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("all Place")
