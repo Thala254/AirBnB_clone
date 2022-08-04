@@ -144,7 +144,7 @@ class TestConsole(unittest.TestCase):
                              fake_output.getvalue())
 
     def test_show(self):
-        Test cmd output: show
+        """Test cmd output: show"""
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("show")
             self.assertEqual("** class name missing **\n",
