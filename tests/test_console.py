@@ -169,5 +169,5 @@ class TestConsole(unittest.TestCase):
             self.assertEqual(int, type(eval(fake_output.getvalue())))
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
