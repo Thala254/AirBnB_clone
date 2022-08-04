@@ -88,7 +88,7 @@ class HBNBCommand(cmd.Cmd):
             return
         try:
             if args[1]:
-                name = "{}.{}".format(args[0], args[1])
+                name = f"{args[0]}.{args[1]}"
                 if name not in storage.all().keys():
                     print("** no instance found **")
                 else:
@@ -120,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
         """
         args = parse(line)
         if len(args) >= 4:
-            key = "{}.{}".format(args[0], args[1])
+            key = f"{args[0]}.{args[1]}"
             cast = type(eval(args[3]))
             arg3 = args[3]
             arg3 = arg3.strip('"')
@@ -197,9 +197,9 @@ class HBNBCommand(cmd.Cmd):
                 arg = class_arg + ' ' + id_arg + ' ' + name_arg + ' ' + val_arg
                 HBNBCommand.do_update(self, arg)
             else:
-                print("*** Unknown syntax: {}".format(line))
+                print(f"*** Unknown syntax: {line}")
         except IndexError:
-            print("*** Unknown syntax: {}".format(line))
+            print(f"*** Unknown syntax: {line}")
 
 
 def parse(line):
