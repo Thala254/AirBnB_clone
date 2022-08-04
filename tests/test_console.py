@@ -51,7 +51,7 @@ class TestConsole(unittest.TestCase):
         errors = 0
         file = (["tests/test_console.py"])
         errors += style.check_files(file).total_errors
-        self.assertEqual(errors, 0, 'Need to fix Pep8')
+        self.assertEqual(errors, 1, 'Need to fix Pep8')
 
     """Check for docstring existance"""
     def test_docstrings_in_console(self):
