@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #!/usr/bin/python3
 """
 Entry to command interpreter
@@ -211,4 +209,3 @@ def parse(line):
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
->>>>>>> 504d970a6cc60b3bb0da8ad295558cfc6471b71d
