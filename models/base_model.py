@@ -26,6 +26,10 @@ class BaseModel:
         """String representation of the BaseModel class"""
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
+    def __repr__(self):
+        """String representation of the BaseModel class"""
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
+
     def save(self):
         """updates the public instance attribute updated_at with the
             current datetime"""

@@ -30,9 +30,7 @@ class FileStorage:
 
     def save(self):
         """serializes __objects to the JSON file path"""
-        json_obj = {}
-        for key, val in FileStorage.__objects.items():
-            json_obj[key] = val.to_dict()
+        json_obj = {key: val.to_dict() for key, val in FileStorage.__objects.items()}
         with open(FileStorage.__file_path, "w") as fd:
             json.dump(json_obj, fd)
 
@@ -41,9 +39,9 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, "r") as fd:
                 FileStorage.__objects = json.load(fd)
-            for key, val in FileStorage.__objects.items():
-                class_name = val["__class__"]
-                class_name = models.classes[class_name]
-                FileStorage.__objects[key] = class_name(**val)
+            FileStorage.__objects = {
+                                 key: models.classes[val["__class__"]](**val)
+                                 for key, val in FileStorage.__objects.items()
+                                 }
         except Exception:
             pass
