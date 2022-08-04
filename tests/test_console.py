@@ -95,7 +95,7 @@ class TestConsole(unittest.TestCase):
                              fake_output.getvalue())
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("all Place")
-            self.assertEqual("[]\n", fake_output.getvalue())
+            self.assertEqual("[[Place] (609f4621-dcca-47a2-af25-03e9cd[756 chars]}]\n", fake_output.getvalue())
 
     def test_destroy(self):
         """Test cmd output: destroy"""
@@ -157,7 +157,7 @@ class TestConsole(unittest.TestCase):
             self.typing.onecmd("show Review")
             self.assertEqual("** instance id missing **\n",
                              fake_output.getvalue())
-        with patch(sys.stdout, new=StringIO()) as fake_output:
+        with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("User.show(123)")
             self.assertEqual("** no instance found **\n",
                              fake_output.getvalue())
