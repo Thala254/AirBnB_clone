@@ -196,7 +196,7 @@ class HBNBCommand(cmd.Cmd):
                 val_arg = val_arg.strip(' ')
                 val_arg = val_arg.strip(')')
                 arg = class_arg + ' ' + id_arg + ' ' + name_arg + ' ' + val_arg
-                HBNBCommand.do_update(self, line)
+                HBNBCommand.do_update(self, arg)
             else:
                 print(f"*** Unknown syntax: {line}")
         except IndexError:
