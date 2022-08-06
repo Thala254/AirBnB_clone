@@ -3,6 +3,7 @@
 Entry to command interpreter
 """
 import cmd
+import json
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
@@ -184,19 +185,39 @@ class HBNBCommand(cmd.Cmd):
                 id_arg = id_arg.strip("'")
                 arg = class_arg + ' ' + id_arg
                 HBNBCommand.do_destroy(self, arg)
-            elif command == update:
+            elif command == 'update':
+                '''
                 args = args[1].split(',')
                 id_arg = args[0].strip("'")
                 id_arg = id_arg.strip('"')
-                name_arg = args[1].strip(',')
-                val_arg = args[2]
-                name_arg = name_arg.strip(' ')
-                name_arg = name_arg.strip("'")
-                name_arg = name_arg.strip('"')
-                val_arg = val_arg.strip(' ')
-                val_arg = val_arg.strip(')')
+                '''
+                args = args[1].split('{')
+                id_arg = args[0].strip(' ').strip(',').strip('"').strip("'")
+                print(id_arg)
+                attr_args = args[1].rstrip(')').rstrip('}')
+                attr_args = '{' + attr_args + '}'
+                attr_args = attr_args.replace("'", '"')
+                attr_args = json.loads(attr_args)
+                for k, v in attr_args.items():
+                    arg = f"{class_arg} {id_arg} {k} {v}"
+                    print(arg)
+                    # HBNBCommand.do_update(self, arg)
+                '''
+                name_arg = args[1].split(':')[0].strip('"').strip('"')
+                name_arg = name_arg.strip(' ').strip('{').strip('"').strip("'")
+                print(name_arg)
+                val_arg = args[1].split(':')[1].strip(' ')
+                print(val_arg)
                 arg = class_arg + ' ' + id_arg + ' ' + name_arg + ' ' + val_arg
                 HBNBCommand.do_update(self, arg)
+                name_arg = args[2].split(':')[0].strip('"').strip('"')
+                name_arg = name_arg.strip(' ').strip('{').strip('"').strip("'")
+                print(name_arg)
+                val_arg = args[2].split(':')[1].split('}')[0].strip(' ')
+                print(val_arg)
+                arg = class_arg + ' ' + id_arg + ' ' + attr_arg + ' ' + val_arg
+                HBNBCommand.do_update(self, arg)
+                '''
             else:
                 print(f"*** Unknown syntax: {line}")
         except IndexError:
