@@ -10,9 +10,3 @@ class State(BaseModel):
         Definition of the State class
     '''
     name = ""
-
-    def __init__(self, *args, **kwargs):
-        """
-        initializes class objects
-        """
-        super().__init__(*args, **kwargs)

@@ -87,6 +87,17 @@ class TestUser(unittest.TestCase):
         self.assertEqual("<class 'str'>", str(type(dictionary["email"])))
         self.assertEqual("<class 'str'>", str(type(dictionary["password"])))
 
+    def test_instantiation(self):
+        """
+            checks if the class instance can be instantiated with or without
+            key_word args (**kwargs)
+        """
+        instance = User()
+        self.assertIsInstance(instance, User)
+        test_user_dict = self.test_user.to_dict()
+        new_model = User(**test_user_dict)
+        self.assertEqual(new_model.id, self.test_user.id)
+
     def test_user_inheritence(self):
         '''
             Test that User class inherits from BaseModel.

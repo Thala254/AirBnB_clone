@@ -134,3 +134,24 @@ class TestBaseModel(unittest.TestCase):
         self.test_model.save()
         new_update_time = self.test_model.updated_at
         self.assertNotEqual(old_update_time, new_update_time)
+
+    def test_instantiation(self):
+        """
+            checks if the class instance can be instantiated with or without
+            key_word args (**kwargs)
+        """
+        instance = BaseModel()
+        self.assertIsInstance(instance, BaseModel)
+        test_model_dict = self.test_model.to_dict()
+        new_model = BaseModel(**test_model_dict)
+        self.assertEqual(new_model.id, self.test_model.id)
+
+    def test_compare_model_dict(self):
+        """
+            checks that the dictionaries of a model created by an instance's
+            dictionary will be same
+        """
+        test_model_dict = self.test_model.to_dict()
+        model_a = BaseModel(**test_model_dict)
+        model_a_dict = model_a.to_dict()
+        self.assertEqual(test_model_dict, model_a_dict)
