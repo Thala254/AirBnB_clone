@@ -92,33 +92,6 @@ class TestFileStorage(unittest.TestCase):
         val = self.storage._FileStorage__objects[key]
         self.assertIsInstance(self.test_model, type(val))
 
-    def test_save_file_exists(self):
-        """
-            Tests that a file gets created with the name file.json
-        """
-        self.storage.save()
-        self.assertTrue(os.path.isfile("file.json"))
-
-    def test_save_file_read(self):
-        """
-            Testing the contents of the files inside the deserialized file.json
-        """
-        self.storage.save()
-        self.storage.new(self.test_model)
-        with open("file.json", encoding="UTF8") as fd:
-            content = json.load(fd)
-        self.assertTrue(type(content) is dict)
-
-    def test_the_type_file_content(self):
-        """
-            testing the type of the contents inside the file.
-        """
-        self.storage.new(self.test_model)
-        self.storage.save()
-        with open("file.json", encoding="UTF8") as fd:
-            content = fd.read()
-        self.assertIsInstance(content, str)
-
     def test_reload_without_file(self):
         """
             Tests that nothing happens when file.json does not exists
