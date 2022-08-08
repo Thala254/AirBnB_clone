@@ -914,7 +914,7 @@ class TestHBNBCommand_update(unittest.TestCase):
             self.assertEqual(correct, output.getvalue().strip())
 
     def test_update_missing_id_dot_notation(self):
-        correct = "*** Unknown syntax: User.update"
+        correct = "*** Unknown syntax: .update"
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(HBNBCommand().onecmd("BaseModel.update"))
             self.assertEqual(correct, output.getvalue().strip())
