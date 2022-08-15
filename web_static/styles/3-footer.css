@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 footer {
   background-color: #fff;
   position: fixed;
@@ -9,3 +10,17 @@ footer {
   justify-content: center;
   align-items: center;
 }
+=======
+.footer {
+    background-color: white;
+    height: 60px;
+    width: 100%;
+    border-top: 1px solid #CCCCCC;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    position: fixed;
+    display: flex;
+}
+>>>>>>> f3b59a20630e1780d86e5d2cf1b082c62fec03f8

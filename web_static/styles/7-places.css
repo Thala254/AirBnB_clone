@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .places {
   width: 100%;
   border: 0;
@@ -28,3 +29,29 @@
 .places article h2 {
   font-size: 30px;
 }
+=======
+.places {
+    font-size: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.places h1 {
+    width: 100%;
+    font-size: 30px;
+}
+
+article { 
+    width: 390px;
+    padding: 20px 20px 20px 20px;
+    margin: 20px 20px 20px 20px;
+    border: 1px solid #FF5A5F;
+    border-radius: 4px;
+}
+
+article h2 {
+    font-size: 30px;
+    text-align: center;
+}
+>>>>>>> f3b59a20630e1780d86e5d2cf1b082c62fec03f8

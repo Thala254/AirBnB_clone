@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 0x01. AirBnB clone - Web static
 
 ## Background Context
@@ -55,3 +56,6 @@ To be able to explain:
 ![[Client side/ front-end]()](images/hbnb_step1.png)
 
 ## Tasks
+=======
+AirBnB-web_static
+>>>>>>> f3b59a20630e1780d86e5d2cf1b082c62fec03f8

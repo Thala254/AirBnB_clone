@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 header {
   background-color: #ff0000;
   height: 70px;
   width: 100%;
 }
+=======
+.header {
+    width: 100%;
+    height: 70px;
+    background-color: #FF0000;
+}
+>>>>>>> f3b59a20630e1780d86e5d2cf1b082c62fec03f8
